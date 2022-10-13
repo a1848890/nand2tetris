@@ -1,0 +1,118 @@
+// Calculates a = x*y
+// a is a local variable
+// x & y are static variables
+
+// Put your code here.
+
+
+/*Check zero*/
+push static 0 // add x
+push constant 0 //add 0
+eq
+if-goto ZERO
+push static 1
+push constant 0
+eq
+if-goto ZERO 
+
+
+push constant 0
+pop local 0 
+
+push static 0
+push constant 0
+lt
+if-goto MOOP
+
+
+label LOOP 
+
+push static 0 
+pop static 2 
+
+label HOOP
+
+push static 2
+push constant 0
+eq
+if-goto END
+push static 2
+push constant 1
+sub
+pop static 2
+push static 1
+push local 0
+add
+pop local 0
+goto HOOP
+
+
+label MOOP
+
+push static 1
+pop static 2 
+
+push static 1
+push constant 0
+lt
+if-goto WHILE
+
+label INMOOP
+
+push static 2
+push constant 0
+eq
+if-goto END
+push static 2
+push constant 1
+sub
+pop static 2
+push static 0
+push local 0
+add
+pop local 0
+goto INMOOP
+
+label WHILE
+
+push static 0
+pop static 2 
+
+push static 1
+neg
+pop static 1
+
+label INLOOP
+
+push static 2
+push constant 0
+eq
+if-goto FINISH
+push static 2
+push constant 1
+add
+pop static 2
+push static 1
+push local 0
+add
+pop local 0
+goto INLOOP
+
+
+label END // (END)
+goto END
+
+label FINISH
+push static 1
+neg
+pop static 1
+goto END
+
+
+
+label ZERO
+push constant 0
+pop local 0
+
+label END
+goto END

@@ -1,0 +1,64 @@
+// Contains a function ArrMax.arrMax that finds and returns the largest element in the array a of length b.
+// a & b are both supplied as arguments
+
+// Put your code here.
+
+function ArrMax.arrMax 2
+
+push static 1 // put static to the local
+pop local 0
+push static 2
+pop local 1
+
+push local 0 // put array to that and make the first index as temp
+pop pointer 1
+push that 0
+pop temp 0
+
+label LOOP
+
+push local 0 // arg[0] as the address of array
+pop argument 0
+push local 1 // arg[1] as the number of index, as counter as well
+pop argument 1
+
+push argument 1 // counter = counter - 1
+push constant 1
+sub
+pop local 1
+
+push argument 1 // if counter == 1, goto END
+push constant 1
+eq
+if-goto END
+
+push argument 0 // make a pointer
+push constant 1
+add
+pop pointer 1
+
+push that 0
+push temp 0
+gt
+if-goto POP 
+
+goto ADDR // else just address+1
+
+label POP // change temp[0]
+push that 0
+pop temp 0 // get into temp
+goto ADDR
+
+label ADDR // address + 1
+push local 0
+push constant 1
+add
+pop local 0
+goto LOOP
+
+label END
+push temp 0
+//push static 1 // static 1 -> the address of array
+//pop pointer 0 // this -> the address of array
+//push this 0 // output this[0], which is the content of pointer = array[0]
+return

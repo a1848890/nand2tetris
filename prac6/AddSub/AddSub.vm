@@ -1,0 +1,15 @@
+// Calculates x = (a + b) - x
+// a & b are local variables
+// x is a static variable
+
+// Put your code here.
+
+push local 0 // now we have a
+push local 1 // now we have b
+add // now we add a, b and get (a+b)
+push static 0 // now we have x
+neg // the negative here take a negative value of x
+add // add '-x' to (a+b)
+pop static 0 // pop the result
+label END
+goto END
